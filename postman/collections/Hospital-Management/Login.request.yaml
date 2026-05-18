@@ -1,6 +1,11 @@
-$kind: http-request
+﻿$kind: http-request
 method: POST
 url: 'http://127.0.0.1:8000/api/login'
+headers:
+  - key: Accept
+    value: application/json
+  - key: Content-Type
+    value: application/json
 order: 2000
 body:
   type: json
