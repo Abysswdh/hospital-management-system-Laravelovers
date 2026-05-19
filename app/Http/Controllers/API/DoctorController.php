@@ -73,4 +73,17 @@ class DoctorController extends Controller
             'message' => 'Doctor deleted successfully.'
         ]);
     }
+
+    public function dashboard()
+    {
+        if (auth()->user()->role !== 'doctor') {
+        return response()->json([
+            'message' => 'Forbidden'
+        ], 403);
+        }
+
+        return response()->json([
+            'message' => 'Welcome Doctor'
+        ]);
+    }
 }
