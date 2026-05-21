@@ -1,2 +1,47 @@
+# Environment
 .env
-node_modules
+.env.local
+.env.*.local
+
+# Dependencies
+/vendor
+/node_modules
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# IDE & Editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+.sublime-project
+.sublime-workspace
+
+# Laravel
+/bootstrap/cache/
+/storage/logs/
+/storage/debugbar/
+storage/app/public/
+.phpunit.result.cache
+phpunit.phar
+
+# Project specific
+.env.backup
+database_backup_*.sql
+composer.lock
+package-lock.json
+
+# OS
+Thumbs.db
+.env.production.local
+.env.production.backup
+
+# Testing
+.coverage
+coverage/
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php

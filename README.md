@@ -51,9 +51,13 @@ API runs on: **http://127.0.0.1:8000/api**
 
 Complete API documentation is available in:
 
+- **[README.md](./README.md)** - Project overview & quick start (you are here)
 - **[API_TESTING_GUIDE.md](./API_TESTING_GUIDE.md)** - Step-by-step Postman testing instructions
 - **[docs/API_DOCUMENTATION.md](./docs/API_DOCUMENTATION.md)** - Complete endpoint reference
 - **[docs/ERD_DIAGRAM.md](./docs/ERD_DIAGRAM.md)** - Database schema and relationships
+- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Production deployment guide
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Guidelines for contributing to the project
+- **[documentation/VIDEO_PRESENTATION_SCRIPT.md](./documentation/VIDEO_PRESENTATION_SCRIPT.md)** - Presentation script for demos
 - **[Postman Collection](./postman/collections/Hospital_Management_System_API.json)** - Import for automatic testing
 
 ---
@@ -429,22 +433,26 @@ This project is open source and available under the MIT license.
 
 ## ✅ Checklist
 
-- [x] Database setup and migrations
-- [x] User authentication (register/login/logout)
+- [x] Database setup and migrations (3NF normalized)
+- [x] User authentication (register/login/logout with Sanctum)
 - [x] Doctor CRUD endpoints
 - [x] Patient CRUD endpoints
-- [x] Appointment scheduling
+- [x] Appointment scheduling with status flow
 - [x] Medical records management
 - [x] File upload/download
 - [x] Error handling and validation
-- [x] API documentation
-- [x] Postman collection
+- [x] API documentation (complete with examples)
+- [x] Postman collection (auto-populated)
 - [x] Database backup
-- [x] ERD diagram
-- [ ] Unit tests (todo)
-- [ ] Integration tests (todo)
-- [ ] Performance optimization (todo)
-- [ ] Deployment guide (todo)
+- [x] ERD diagram (DBML format)
+- [x] .gitignore (proper Laravel setup)
+- [x] .env.example (with comments)
+- [x] Deployment guide (production-ready)
+- [x] Contributing guidelines
+- [x] Video presentation script (with narration & actions)
+- [ ] Unit tests (todo - community contribution)
+- [ ] Integration tests (todo - community contribution)
+- [ ] Performance optimization (todo - future enhancement)
 
 ---
 
