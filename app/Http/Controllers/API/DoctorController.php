@@ -84,6 +84,7 @@ class DoctorController extends Controller
 
         return response()->json([
             'message' => 'Welcome Doctor'
+            'user' => auth()->user()
         ]);
     }
 }

@@ -1,33 +1,83 @@
 <?php
 
-namespace App\Models;
+namespace App\Http\Controllers\API;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Models\Appointment;
 
-class Appointment extends Model
+class AppointmentController extends Controller
 {
-    protected $fillable = [
-        'patient_id',
-        'doctor_id',
-        'appointment_date',
-        'status',
-        'complaint'
-    ];
-
-    public function doctor(): BelongsTo
+    // GET ALL APPOINTMENT NYA
+    public function index()
     {
-        return $this->belongsTo(Doctor::class);
+        $appointments = Appointment::with([
+            'doctor',
+            'patient',
+            'medicalRecord'
+        ])->get();
+
+        return response()->json($appointments);
     }
 
-    public function patient(): BelongsTo
+    // BUAT APPOINTMENT
+    public function store(Request $request)
     {
-        return $this->belongsTo(Patient::class);
+        $validated = $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'doctor_id' => 'required|exists:doctors,id',
+            'appointment_date' => 'required|date',
+            'complaint' => 'nullable|string'
+        ]);
+
+        $appointment = Appointment::create([
+            'patient_id' => $validated['patient_id'],
+            'doctor_id' => $validated['doctor_id'],
+            'appointment_date' => $validated['appointment_date'],
+            'complaint' => $validated['complaint'] ?? null,
+            'status' => 'pending'
+        ]);
+
+        return response()->json([
+            'message' => 'Appointment created successfully',
+            'data' => $appointment
+        ], 201);
     }
 
-    public function medicalRecord(): HasOne
+    
+    public function show($id)
     {
-        return $this->hasOne(MedicalRecord::class);
+        $appointment = Appointment::with([
+            'doctor',
+            'patient',
+            'medicalRecord'
+        ])->findOrFail($id);
+
+        return response()->json($appointment);
+    }
+
+    // UPDATE
+    public function update(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->update($request->all());
+
+        return response()->json([
+            'message' => 'Appointment updated successfully',
+            'data' => $appointment
+        ]);
+    }
+
+    // DELETE APPOINTMENT
+    public function destroy($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        $appointment->delete();
+
+        return response()->json([
+            'message' => 'Appointment deleted successfully'
+        ]);
     }
 }

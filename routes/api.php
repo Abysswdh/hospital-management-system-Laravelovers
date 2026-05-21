@@ -21,6 +21,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Dashboards
     Route::get('/doctor-dashboard',  [DoctorController::class,  'dashboard']);
     Route::get('/patient-dashboard', [PatientController::class, 'dashboard']);
+    
+    //PATIENTS
+    Route::apiResource('patients',PatientController::class);
 
     // Appointments
     Route::apiResource('appointments', AppointmentController::class);

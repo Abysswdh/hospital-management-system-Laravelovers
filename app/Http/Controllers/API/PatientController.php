@@ -3,76 +3,62 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Patient;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
+use App\Models\Patient;
 
 class PatientController extends Controller
 {
-    public function index(): JsonResponse
+    public function index()
     {
-        $patients = Patient::with('user', 'appointments')->get();
-        return response()->json([
-            'message' => 'Patients retrieved successfully.',
-            'data' => $patients
-        ]);
+        return response()->json(Patient::all());
     }
 
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'date_of_birth' => 'required|date',
-            'address' => 'required|string|max:255',
-            'phone' => 'required|string|max:20',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'name' => 'required',
+            'age' => 'required|integer',
+            'gender' => 'required',
+            'address' => 'required',
+            'phone' => 'required'
         ]);
 
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('patients', 'public');
-        }
+        $patient = Patient::create([
+            'user_id' => auth()->id(),
+            ...$validated
+        ]);
 
-        $patient = Patient::create($validated);
         return response()->json([
-            'message' => 'Patient created successfully.',
+            'message' => 'Patient created successfully',
             'data' => $patient
         ], 201);
     }
 
-    public function show(Patient $patient): JsonResponse
+    public function show($id)
     {
-        $patient->load('user', 'appointments');
+        return response()->json(
+            Patient::findOrFail($id)
+        );
+    }
+
+    public function update(Request $request, $id)
+    {
+        $patient = Patient::findOrFail($id);
+
+        $patient->update($request->all());
+
         return response()->json([
-            'message' => 'Patient retrieved successfully.',
+            'message' => 'Patient updated successfully',
             'data' => $patient
         ]);
     }
 
-    public function update(Request $request, Patient $patient): JsonResponse
+    public function destroy($id)
     {
-        $validated = $request->validate([
-            'date_of_birth' => 'sometimes|date',
-            'address' => 'sometimes|string|max:255',
-            'phone' => 'sometimes|string|max:20',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+        Patient::findOrFail($id)->delete();
 
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('patients', 'public');
-        }
-
-        $patient->update($validated);
         return response()->json([
-            'message' => 'Patient updated successfully.',
-            'data' => $patient
-        ]);
-    }
-
-    public function destroy(Patient $patient): JsonResponse
-    {
-        $patient->delete();
-        return response()->json([
-            'message' => 'Patient deleted successfully.'
+            'message' => 'Patient deleted successfully'
         ]);
     }
 }

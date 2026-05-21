@@ -10,10 +10,11 @@ class Patient extends Model
 {
     protected $fillable = [
         'user_id',
-        'date_of_birth',
+        'name',
+        'age',
+        'gender',
         'address',
-        'phone',
-        'photo'
+        'phone'
     ];
 
     public function user(): BelongsTo
