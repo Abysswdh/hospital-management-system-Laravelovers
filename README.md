@@ -2,11 +2,11 @@
 
 A complete **Laravel REST API** for hospital management with authentication, CRUD operations for doctors, patients, appointments, medical records, and file management.
 
-**Status**: ✅ Production Ready | **Version**: 1.0 | **Built with**: Laravel 12 + Sanctum
+**Status**: Production Ready | **Version**: 1.0 | **Built with**: Laravel 12 + Sanctum
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - PHP 8.2+
@@ -47,30 +47,27 @@ API runs on: **http://127.0.0.1:8000/api**
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 Complete API documentation is available in:
 
 - **[README.md](./README.md)** - Project overview & quick start (you are here)
-- **[API_TESTING_GUIDE.md](./API_TESTING_GUIDE.md)** - Step-by-step Postman testing instructions
 - **[docs/API_DOCUMENTATION.md](./docs/API_DOCUMENTATION.md)** - Complete endpoint reference
-- **[docs/ERD_DIAGRAM.md](./docs/ERD_DIAGRAM.md)** - Database schema and relationships
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Production deployment guide
-- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Guidelines for contributing to the project
-- **[documentation/VIDEO_PRESENTATION_SCRIPT.md](./documentation/VIDEO_PRESENTATION_SCRIPT.md)** - Presentation script for demos
 - **[Postman Collection](./postman/collections/Hospital_Management_System_API.json)** - Import for automatic testing
+- **[ERD Diagram](https://dbdiagram.io/d/ERD-Diagram-hospital-management-system-Laravelovers-6a0e74e1dfb20dafcdb7aead)** - Interactive database schema
+- **[documentation/VIDEO_PRESENTATION_SCRIPT.md](./documentation/VIDEO_PRESENTATION_SCRIPT.md)** - Presentation script for demos
 
 ---
 
-## 🔑 Core Features
+## Core Features
 
-### ✅ Authentication
+### Authentication
 - User registration with role assignment (admin, doctor, patient)
 - JWT-style token authentication (Laravel Sanctum)
 - Login/logout endpoints
 - Token-based API access
 
-### ✅ Doctors Management
+### Doctors Management
 ```
 GET    /api/doctors           - List all doctors
 POST   /api/doctors           - Create doctor (auth required)
@@ -79,7 +76,7 @@ PUT    /api/doctors/{id}      - Update doctor (auth required)
 DELETE /api/doctors/{id}      - Delete doctor (auth required)
 ```
 
-### ✅ Patients Management
+### Patients Management
 ```
 GET    /api/patients          - List all patients
 POST   /api/patients          - Create patient (auth required)
@@ -88,7 +85,7 @@ PUT    /api/patients/{id}     - Update patient (auth required)
 DELETE /api/patients/{id}     - Delete patient (auth required)
 ```
 
-### ✅ Appointments Scheduling
+### Appointments Scheduling
 ```
 GET    /api/appointments      - List all appointments
 POST   /api/appointments      - Schedule appointment (auth required)
@@ -97,7 +94,7 @@ PUT    /api/appointments/{id} - Update appointment (auth required)
 DELETE /api/appointments/{id} - Cancel appointment (auth required)
 ```
 
-### ✅ Medical Records
+### Medical Records
 ```
 GET    /api/medical-records          - List all records
 POST   /api/medical-records          - Create record (auth required)
@@ -106,7 +103,7 @@ PUT    /api/medical-records/{id}     - Update record (auth required)
 DELETE /api/medical-records/{id}     - Delete record (auth required)
 ```
 
-### ✅ File Management
+### File Management
 ```
 GET    /api/files             - List all files
 POST   /api/files             - Upload file (auth required, multipart/form-data)
@@ -118,7 +115,7 @@ GET    /api/files/{id}/download - Download file
 
 ---
 
-## 📋 API Example Usage
+## API Example Usage
 
 ### Register User
 ```bash
@@ -200,20 +197,23 @@ Files (separate storage)
 ### Import Collection
 1. Open Postman
 2. File → Import
-3. Select: `postman/collections/Hospital_Management_System_API.json`
-4. Click Import ✓
+4. Click Import
 
 ### Set Variables
 Environment variables in Postman:
 - `base_url` = `http://127.0.0.1:8000`
-- `access_token` = (will be auto-populated after login)
+- `token` = (will be auto-populated after login)
 
 ### Test Workflow
-See [API_TESTING_GUIDE.md](./API_TESTING_GUIDE.md) for complete step-by-step guide
+1. Start server: `php artisan serve`
+2. Register a new user via /api/register
+3. Copy access token from response
+4. Set token variable in Postman
+5. Test other endpoints
 
 ---
 
-## 🔐 Authentication
+## Authentication
 
 All POST/PUT/DELETE endpoints require authentication:
 
@@ -230,18 +230,18 @@ Authorization: Bearer {access_token}
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 hospital-management-system-kelompok-laravelovers/
 ├── app/
 │   ├── Http/Controllers/API/
-│   │   ├── AuthController.php          ✅ Authentication
-│   │   ├── DoctorController.php        ✅ Doctor CRUD
-│   │   ├── PatientController.php       ✅ Patient CRUD
-│   │   ├── AppointmentController.php   ✅ Appointment CRUD
-│   │   ├── MedicalRecordController.php ✅ Medical Record CRUD
-│   │   └── FileController.php          ✅ File Upload/Download
+│   │   ├── AuthController.php          Authentication
+│   │   ├── DoctorController.php        Doctor CRUD
+│   │   ├── PatientController.php       Patient CRUD
+│   │   ├── AppointmentController.php   Appointment CRUD
+│   │   ├── MedicalRecordController.php Medical Record CRUD
+│   │   └── FileController.php          File Upload/Download
 │   ├── Models/
 │   │   ├── Doctor.php
 │   │   ├── Patient.php
@@ -251,30 +251,28 @@ hospital-management-system-kelompok-laravelovers/
 │   │   └── User.php
 │
 ├── routes/
-│   └── api.php                         ✅ All API routes
+│   └── api.php                         All API routes
 │
 ├── database/
 │   ├── migrations/
-│   │   └── *_create_*.php              ✅ Schema migrations
+│   │   └── *_create_*.php              Schema migrations
 │   └── backup/
-│       └── database_backup_*.sql       ✅ Database backup
+│       └── database_backup_*.sql       Database backup
 │
 ├── docs/
-│   ├── API_DOCUMENTATION.md            ✅ Complete API reference
-│   ├── ERD_DIAGRAM.md                  ✅ Database schema
-│   └── database_backup_*.sql           ✅ Database backup
+│   ├── API_DOCUMENTATION.md            Complete API reference
+│   └── database_backup_*.sql           Database backup
 │
 ├── postman/
 │   └── collections/
-│       └── Hospital_Management_System_API.json ✅ Postman collection
+│       └── Hospital_Management_System_API.json Postman collection
 │
-├── API_TESTING_GUIDE.md                ✅ Postman testing guide
-└── README.md                           ✅ This file
+└── README.md                           This file
 ```
 
 ---
 
-## 🚀 Running the Project
+## Running the Project
 
 ### Development
 ```bash
@@ -299,7 +297,7 @@ DB_DATABASE=hospital_mgmt_prod
 
 ---
 
-## 📊 Response Format
+## Response Format
 
 All endpoints return JSON with consistent format:
 
@@ -337,7 +335,7 @@ All endpoints return JSON with consistent format:
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables (.env)
 ```env
@@ -369,7 +367,7 @@ FILESYSTEM_DISK=local
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Server won't start
 ```bash
@@ -403,7 +401,7 @@ php artisan storage:link
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 - [Laravel Documentation](https://laravel.com/docs)
 - [Laravel Sanctum](https://laravel.com/docs/sanctum) - API Authentication
@@ -412,7 +410,7 @@ php artisan storage:link
 
 ---
 
-## 👥 Team & Contributors
+## Team & Contributors
 
 **Team:** Laravelovers (BNCC LnT Back-End - Final Project 2026)
 
@@ -432,10 +430,10 @@ php artisan storage:link
 
 ---
 
-## 📋 Project Status & Submission Info
+## Project Status & Submission Info
 
 **Last Updated**: 21 May 2026  
-**API Status**: ✅ Production Ready  
+**API Status**: Production Ready  
 **Server**: http://127.0.0.1:8000  
 **Database**: hospital_management (MySQL)
 
@@ -444,31 +442,31 @@ php artisan storage:link
 - **Authenticated Routes**: 20 (with Laravel Sanctum)
 - **Public Routes**: 12 (register, login, etc)
 - **Database Tables**: 8 (users, doctors, patients, appointments, medical_records, files, schedules, notifications)
-- **Database Normalization**: 3NF ✅
+- **Database Normalization**: 3NF
 - **Test Coverage**: Unit & Feature tests included
 
 ### Submission Checklist
-- ✅ GitHub Repository (public, master branch)
-- ✅ README with installation guide
-- ✅ Team member information & NIM
-- ✅ .env.example configuration template
-- ✅ Database dump (preseeded data)
-- ✅ Postman collection (API endpoints)
-- ✅ Comprehensive API documentation
-- ✅ Video presentation script (30 min)
-- ✅ Proper .gitignore file
+- GitHub Repository (public, master branch)
+- README with installation guide
+- Team member information & NIM
+- .env.example configuration template
+- Database dump (preseeded data)
+- Postman collection (API endpoints)
+- Comprehensive API documentation
+- Video presentation script (30 min)
+- Proper .gitignore file
 
 **Deadline**: 23 Mei 2026 23:59 WIB
 
 ---
 
-## 📝 License
+## License
 
 This project is open source and available under the MIT license.
 
 ---
 
-## ✅ Checklist
+## Checklist
 
 - [x] Database setup and migrations (3NF normalized)
 - [x] User authentication (register/login/logout with Sanctum)
@@ -484,16 +482,12 @@ This project is open source and available under the MIT license.
 - [x] ERD diagram (DBML format)
 - [x] .gitignore (proper Laravel setup)
 - [x] .env.example (with comments)
-- [x] Deployment guide (production-ready)
-- [x] Contributing guidelines
-- [x] Video presentation script (with narration & actions)
 - [ ] Unit tests (todo - community contribution)
 - [ ] Integration tests (todo - community contribution)
-- [ ] Performance optimization (todo - future enhancement)
 
 ---
 
-## 📋 Kriteria Penilaian (Scoring)
+## Kriteria Penilaian (Scoring)
 
 | No | Kriteria | Deskripsi | Bobot |
 |----|----------|-----------|-------|
