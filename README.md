@@ -414,14 +414,51 @@ php artisan storage:link
 
 ## 👥 Team & Contributors
 
-**Team**: LaravelOvers (Kelompok)
+**Team:** Laravelovers (BNCC LnT Back-End - Final Project 2026)
 
-Development work includes:
-- REST API implementation
-- Database schema and migrations
-- Authentication system
-- CRUD operations
-- Documentation and testing
+| Nama | NIM | Program |
+|------|-----|---------|
+| Giyas Asfahani Subhan | 2902675314 | Computer Science |
+| Putra Abyasa Wedha | 2902583635 | Computer Science |
+
+**Kontribusi:**
+- Database design & normalization (3NF)
+- REST API implementation with Laravel Sanctum
+- CRUD operations untuk semua entities
+- Authentication & Authorization
+- File management system
+- Email notifications
+- Testing & documentation
+
+---
+
+## 📋 Project Status & Submission Info
+
+**Last Updated**: 21 May 2026  
+**API Status**: ✅ Production Ready  
+**Server**: http://127.0.0.1:8000  
+**Database**: hospital_management (MySQL)
+
+### Implementation Statistics
+- **Total Endpoints**: 32 (public + protected)
+- **Authenticated Routes**: 20 (with Laravel Sanctum)
+- **Public Routes**: 12 (register, login, etc)
+- **Database Tables**: 8 (users, doctors, patients, appointments, medical_records, files, schedules, notifications)
+- **Database Normalization**: 3NF ✅
+- **Test Coverage**: Unit & Feature tests included
+
+### Submission Checklist
+- ✅ GitHub Repository (public, master branch)
+- ✅ README with installation guide
+- ✅ Team member information & NIM
+- ✅ .env.example configuration template
+- ✅ Database dump (preseeded data)
+- ✅ Postman collection (API endpoints)
+- ✅ Comprehensive API documentation
+- ✅ Video presentation script (30 min)
+- ✅ Proper .gitignore file
+
+**Deadline**: 23 Mei 2026 23:59 WIB
 
 ---
 
@@ -456,13 +493,18 @@ This project is open source and available under the MIT license.
 
 ---
 
-## 🔄 Last Updated
+## 📋 Kriteria Penilaian (Scoring)
 
-**Date**: 15 May 2026  
-**API Status**: ✅ Fully Functional  
-**Server**: Running on http://127.0.0.1:8000  
-**Database**: hospital_management (MySQL)
+| No | Kriteria | Deskripsi | Bobot |
+|----|----------|-----------|-------|
+| 1 | Database Design | ERD, normalisasi hingga 3NF, SQL JOIN, relasi tabel | 15% |
+| 2 | Authentication & Authorization | Login/Register, role-based access, middleware | 15% |
+| 3 | REST API & JSON | Endpoint terstruktur, response konsisten, Postman | 15% |
+| 4 | File Storage | Upload dokumen, read/stream, delete, validasi | 10% |
+| 5 | Seeder, Factory & Faker | Data dummy realistis, minimal 3 seeder | 10% |
+| 6 | Pagination & Testing | Listing dengan pagination, minimal 10 unit/feature test | 15% |
+| 7 | Mailing | Email notifikasi booking/reminder/status changes | 10% |
+| 8 | Kode & Dokumentasi | PSR-12, README lengkap, env config, arsitektur MVC | 10% |
+| | **TOTAL** | | **100%** |
 
-**Total Endpoints**: 32  
-**Authenticated Routes**: 20  
-**Public Routes**: 12
+---
