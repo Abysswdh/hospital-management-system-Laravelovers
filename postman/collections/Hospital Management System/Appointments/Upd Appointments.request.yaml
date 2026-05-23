@@ -1,0 +1,18 @@
+$kind: http-request
+name: Upd Appointments
+url: http://127.0.0.1:8000/api/appointments/1
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \    \"status\": \"confirmed\",\r
+
+    \    \"appointment_date\": \"2026-05-31 14:00:00\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: http://127.0.0.1:8000/api/appointments/1http://127.0.0.1:8000/api/appointments/1
+order: 4000

@@ -1,0 +1,16 @@
+$kind: http-request
+name: New Request
+url: http://127.0.0.1:8000/api/files
+method: POST
+headers:
+  - key: Accept
+    value: application/json
+  - key: Authorization
+    value: ""
+    disabled: true
+auth:
+  type: bearer
+settings:
+  disabledSystemHeaders:
+    - accept
+order: 1779533285481

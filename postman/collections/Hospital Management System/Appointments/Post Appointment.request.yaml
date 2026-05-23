@@ -1,0 +1,24 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/appointments
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \    \"patient_id\": 1,\r
+
+    \    \"doctor_id\": 1,\r
+
+    \    \"appointment_date\": \"2026-05-25 10:00:00\",\r
+
+    \    \"complaint\": \"Sakit kepala sebelah kanan sudah 3 hari, butuh
+    pemeriksaan segera.\",\r
+
+    \    \"status\": \"pending\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: 19|W3NXB2afvIQKQ1uAPi8CdfZoxwBdEp9uNikJgY2O9f9047b7
+order: 1000

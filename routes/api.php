@@ -10,29 +10,42 @@ use Illuminate\Support\Facades\Route;
 
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login',    [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
 
-// Protected routes (require Sanctum token)
+
+// Protected routes
 Route::middleware('auth:sanctum')->group(function () {
 
     // Auth
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Dashboards
-    Route::get('/doctor-dashboard',  [DoctorController::class,  'dashboard']);
-    Route::get('/patient-dashboard', [PatientController::class, 'dashboard']);
-    
-    //PATIENTS
-    Route::apiResource('patients',PatientController::class);
+    // Dashboard Doctor
+    Route::middleware('role:doctor')->group(function () {
+        Route::get('/doctor-dashboard', [DoctorController::class, 'dashboard']);
+    });
 
-    // Appointments
+    // Dashboard Patient
+    Route::middleware('role:patient')->group(function () {
+        Route::get('/patient-dashboard', [PatientController::class, 'dashboard']);
+    });
+
+    // Doctors CRUD
+    Route::apiResource('doctors', DoctorController::class);
+    
+    // Patients CRUD
+    Route::apiResource('patients', PatientController::class);
+
+    // Appointments CRUD
     Route::apiResource('appointments', AppointmentController::class);
 
-    // Medical Records
+    // Medical Records CRUD
     Route::apiResource('medical-records', MedicalRecordController::class);
 
-    // File uploads
-    Route::post('/files/upload', [FileController::class, 'upload']);
-    Route::get('/files/{id}',    [FileController::class, 'show']);
-    Route::delete('/files/{id}', [FileController::class, 'destroy']);
+    // File Upload Routes
+    Route::post('/files/upload', [FileController::class, 'store']);
+    Route::get('/files', [FileController::class, 'index']);
+    Route::get('/files/{file}', [FileController::class, 'show']);
+    Route::get('/files/{file}/download', [FileController::class, 'download']);
+    Route::put('/files/{file}', [FileController::class, 'update']);
+    Route::delete('/files/{file}', [FileController::class, 'destroy']);
 });

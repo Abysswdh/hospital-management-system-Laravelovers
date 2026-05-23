@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get Appointments by id
+url: http://127.0.0.1:8000/api/appointments/
+method: GET
+order: 2293

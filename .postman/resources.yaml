@@ -1,13 +1,9 @@
-# Use this workspace to collaborate
 workspace:
   id: 0ba7b0e2-3897-46fb-83f6-18ae51f41ae4
-
 cloudResources:
   collections:
     ..\postman\collections\Hospital Management System: d23eaa99-8cd4-4fe7-9905-9ecc6317c784
-
-# All resources in the `postman/` folder are automatically registered in Local View.
-# Point to additional files outside the `postman/` folder to register them individually. Example:
-#localResources:
-#  collections:
-#    - ../tests/E2E Test Collection/
+    ../postman/collections/Hospital Management System API: 54834066-c677d20b-a618-4a3f-b928-182b4e78f7e0
+localResources:
+  collections:
+    - ../postman/collections/Hospital Management System API

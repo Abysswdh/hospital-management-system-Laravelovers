@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/patients/1
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "blood_type": "A+",
+      "allergies": "Aspirin"
+    }
+order: 4000

@@ -1,0 +1,10 @@
+$kind: http-request
+name: Upd Medical Record
+url: http://127.0.0.1:8000/api/medical-records/1
+method: PUT
+body:
+  type: json
+  content: '{"diagnosis": "Flu Berat", ...}'
+auth:
+  type: bearer
+order: 3560473775571571

@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/medical-records/1
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "diagnosis": "Severe cold with fever",
+      "treatment": "Antibiotics prescribed",
+      "notes": "Follow-up appointment after 5 days"
+    }
+order: 4000

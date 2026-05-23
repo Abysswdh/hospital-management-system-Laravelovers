@@ -1,0 +1,16 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/register
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "name": "Dr. Ahmad Wijaya",
+      "email": "ahmad@hospital.com",
+      "password": "SecurePassword123!",
+      "password_confirmation": "SecurePassword123!",
+      "role": "doctor"
+    }
+order: 1000

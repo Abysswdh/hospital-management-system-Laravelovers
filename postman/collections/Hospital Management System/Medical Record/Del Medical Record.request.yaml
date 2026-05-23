@@ -1,0 +1,5 @@
+$kind: http-request
+name: Del Medical Record
+url: http://127.0.0.1:8000/api/medical-records/1
+method: DELETE
+order: 4380016119215220

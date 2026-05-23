@@ -3,88 +3,71 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Doctor;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
+use App\Models\Doctor;
 
 class DoctorController extends Controller
 {
-    public function index(): JsonResponse
-    {
-        $doctors = Doctor::with('user', 'appointments')->get();
-        return response()->json([
-            'message' => 'Doctors retrieved successfully.',
-            'data' => $doctors
-        ]);
-    }
+    // GET ALL
+    public function index()
+{
+    return response()->json([
+        'message' => 'doctor route works'
+    ]);
+}
 
-    public function store(Request $request): JsonResponse
+    // CREATE
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'specialization' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('doctors', 'public');
-        }
-
         $doctor = Doctor::create($validated);
+
         return response()->json([
-            'message' => 'Doctor created successfully.',
+            'message' => 'Doctor created successfully',
             'data' => $doctor
         ], 201);
     }
 
-    public function show(Doctor $doctor): JsonResponse
+    // GET SINGLE
+    public function show($id)
     {
-        $doctor->load('user', 'appointments');
-        return response()->json([
-            'message' => 'Doctor retrieved successfully.',
-            'data' => $doctor
-        ]);
+        return response()->json(
+            Doctor::findOrFail($id)
+        );
     }
 
-    public function update(Request $request, Doctor $doctor): JsonResponse
+    // UPDATE
+    public function update(Request $request, $id)
     {
+        $doctor = Doctor::findOrFail($id);
+
         $validated = $request->validate([
             'specialization' => 'sometimes|string|max:255',
             'phone' => 'sometimes|string|max:20',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('doctors', 'public');
-        }
-
         $doctor->update($validated);
+
         return response()->json([
-            'message' => 'Doctor updated successfully.',
+            'message' => 'Doctor updated successfully',
             'data' => $doctor
         ]);
     }
 
-    public function destroy(Doctor $doctor): JsonResponse
+    // DELETE
+    public function destroy($id)
     {
+        $doctor = Doctor::findOrFail($id);
+
         $doctor->delete();
-        return response()->json([
-            'message' => 'Doctor deleted successfully.'
-        ]);
-    }
-
-    public function dashboard()
-    {
-        if (auth()->user()->role !== 'doctor') {
-        return response()->json([
-            'message' => 'Forbidden'
-        ], 403);
-        }
 
         return response()->json([
-            'message' => 'Welcome Doctor'
-            'user' => auth()->user()
+            'message' => 'Doctor deleted successfully'
         ]);
     }
 }

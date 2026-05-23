@@ -31,8 +31,10 @@ class AppointmentController extends Controller
             'complaint' => 'required|string|max:500'
         ]);
 
+        // Set default status kalau nggak diisi
         $validated['status'] = $validated['status'] ?? 'pending';
-        $validated['appointment_date'] = substr($validated['appointment_date'], 0, 10);
+        
+        // Langsung create, nggak usah di-substr aneh-aneh
         $appointment = Appointment::create($validated);
 
         // Load relationships for email

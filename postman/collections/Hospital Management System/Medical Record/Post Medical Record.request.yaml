@@ -1,0 +1,9 @@
+$kind: http-request
+name: Post Medical Record
+url: http://127.0.0.1:8000/api/medical-records
+method: POST
+auth:
+  type: bearer
+  credentials:
+    token: http://127.0.0.1:8000/api/medical-records
+order: 1000

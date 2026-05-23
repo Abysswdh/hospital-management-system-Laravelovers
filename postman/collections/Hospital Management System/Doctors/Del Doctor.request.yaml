@@ -1,0 +1,8 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/doctors/1
+method: DELETE
+auth:
+  type: bearer
+  credentials:
+    token: 17|lNSrGvIAKYM1yIru8dF4502e1BFA8tOYqEPl1wRAc4c7b4dc
+order: 4123027533454515

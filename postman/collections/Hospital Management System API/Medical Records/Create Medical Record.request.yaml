@@ -1,0 +1,16 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/medical-records
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "appointment_id": 1,
+      "diagnosis": "Common cold",
+      "treatment": "Rest and fluids",
+      "notes": "Patient advised to rest for 3 days"
+    }
+order: 2000

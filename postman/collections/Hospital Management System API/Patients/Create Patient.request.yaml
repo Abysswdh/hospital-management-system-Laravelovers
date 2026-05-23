@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/patients
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "user_id": 2,
+      "blood_type": "O+",
+      "allergies": "Penicillin"
+    }
+order: 2000

@@ -1,0 +1,18 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/files/upload
+method: POST
+headers:
+  Authorization: Bearer {{token}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: appointment_id
+      value: "1"
+    - type: text
+      key: file_type
+      value: prescription
+    - type: file
+      key: file
+      src: ""
+order: 1000

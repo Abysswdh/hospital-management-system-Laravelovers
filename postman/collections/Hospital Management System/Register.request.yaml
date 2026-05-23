@@ -1,7 +1,0 @@
-$kind: http-request
-url: http://127.0.0.1:8000/api/auth/register
-method: POST
-body:
-  type: text
-  content: '{"name":"Dr. Test","email":"test@example.com","password":"password123","password_confirmation":"password123","role":"doctor"}'
-order: 1000

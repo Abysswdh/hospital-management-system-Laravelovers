@@ -1,0 +1,13 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/appointments/1
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "status": "confirmed"
+    }
+order: 4000

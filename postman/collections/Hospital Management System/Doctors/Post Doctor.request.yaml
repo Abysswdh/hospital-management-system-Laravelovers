@@ -1,0 +1,8 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/doctors
+method: POST
+auth:
+  type: bearer
+  credentials:
+    token: 14|WbTzzYhRqzGhQ0cG91vefTz3B7F5DyDItW3wmrRtbe191701
+order: 1643565126945

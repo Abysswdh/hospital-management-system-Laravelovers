@@ -1,0 +1,14 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/doctors/1
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "specialization": "Neurology",
+      "phone_number": "08129876543"
+    }
+order: 4000

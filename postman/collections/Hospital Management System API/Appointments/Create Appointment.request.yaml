@@ -1,0 +1,16 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/appointments
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "patient_id": 1,
+      "doctor_id": 1,
+      "appointment_date": "2026-05-25 14:00:00",
+      "complaint": "Regular health checkup"
+    }
+order: 2000

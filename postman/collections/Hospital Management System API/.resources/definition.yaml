@@ -1,0 +1,5 @@
+$kind: collection
+description: Complete REST API for Hospital Management System (Laravel + Sanctum)
+variables:
+  token: ""
+  base_url: http://127.0.0.1:8000

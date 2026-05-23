@@ -1,0 +1,7 @@
+$kind: http-request
+name: New Request
+url: http://127.0.0.1:8000/api/files/1/download
+method: DELETE
+auth:
+  type: bearer
+order: 1716059927738464

@@ -1,0 +1,12 @@
+$kind: http-request
+name: Dash-Patient
+url: http://127.0.0.1:8000/api/patient-dashboard
+method: GET
+headers:
+  Accept: application/json
+auth:
+  type: bearer
+settings:
+  disabledSystemHeaders:
+    - accept
+order: 4343633623326292

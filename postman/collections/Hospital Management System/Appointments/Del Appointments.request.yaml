@@ -1,0 +1,9 @@
+$kind: http-request
+name: Del Appointments
+url: http://127.0.0.1:8000/api/appointments/1
+method: DELETE
+auth:
+  type: bearer
+  credentials:
+    token: http://127.0.0.1:8000/api/appointments/1http://127.0.0.1:8000/api/appointments/1
+order: 5000

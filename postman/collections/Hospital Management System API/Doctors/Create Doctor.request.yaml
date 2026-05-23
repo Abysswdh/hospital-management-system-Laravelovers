@@ -1,0 +1,15 @@
+$kind: http-request
+url: http://127.0.0.1:8000/api/doctors
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: text
+  content: |-
+    {
+      "user_id": 1,
+      "specialization": "Cardiology",
+      "phone_number": "08123456789"
+    }
+order: 2000
