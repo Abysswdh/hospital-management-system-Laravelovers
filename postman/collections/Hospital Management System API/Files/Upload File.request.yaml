@@ -7,11 +7,8 @@ body:
   type: formdata
   content:
     - type: text
-      key: appointment_id
-      value: "1"
-    - type: text
-      key: file_type
-      value: prescription
+      key: description
+      value: Medical attachment
     - type: file
       key: file
       src: ""

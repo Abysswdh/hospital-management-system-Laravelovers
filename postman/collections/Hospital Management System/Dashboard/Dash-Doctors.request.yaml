@@ -1,9 +1,0 @@
-$kind: http-request
-url: http://127.0.0.1:8000/api/doctor-dashboard
-method: GET
-headers:
-  "| KEY           | VALUE            |": ""
-  "| ------------- | ---------------- |": ""
-  "| Accept        | application/json |": ""
-  "| Authorization | Bearer TOKEN     |": ""
-order: 1779459377148

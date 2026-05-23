@@ -8,7 +8,8 @@ body:
   type: text
   content: |-
     {
-      "blood_type": "A+",
-      "allergies": "Aspirin"
+      "name": "Budi Update",
+      "address": "Bandung Barat",
+      "phone": "081211112222"
     }
 order: 4000

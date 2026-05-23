@@ -14,9 +14,20 @@ return Application::configure(basePath: dirname(__DIR__))
     )
 
     ->withMiddleware(function ($middleware) {
-    $middleware->alias([
-        'role' => \App\Http\Middleware\RoleMiddleware::class,
-    ]);
+        $middleware->alias([
+            'role' => \App\Http\Middleware\RoleMiddleware::class,
+        ]);
+        $middleware->redirectTo(guests: function ($request) {
+            if ($request->expectsJson() || $request->is('api/*')) {
+                return null;
+            }
+
+            if (app('router')->has('login')) {
+                return route('login');
+            }
+
+            return null;
+        });
     })
 
     ->withExceptions(function (Exceptions $exceptions): void {

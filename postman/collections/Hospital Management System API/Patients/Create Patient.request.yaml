@@ -8,8 +8,12 @@ body:
   type: text
   content: |-
     {
-      "user_id": 2,
-      "blood_type": "O+",
-      "allergies": "Penicillin"
+      "user_id": 8,
+      "name": "Budi Santoso",
+      "email": "budi@example.com",
+      "date_of_birth": "1995-01-10",
+      "address": "Bandung",
+      "gender": "male",
+      "phone": "081298765432"
     }
 order: 2000

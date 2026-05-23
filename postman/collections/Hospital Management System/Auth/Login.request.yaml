@@ -1,7 +1,0 @@
-$kind: http-request
-url: http://127.0.0.1:8000/api/auth/login
-method: POST
-body:
-  type: text
-  content: '{"email":"test@example.com","password":"password123"}'
-order: 2360979853257376

@@ -9,6 +9,6 @@ body:
   content: |-
     {
       "specialization": "Neurology",
-      "phone_number": "08129876543"
+      "phone": "08129876543"
     }
 order: 4000

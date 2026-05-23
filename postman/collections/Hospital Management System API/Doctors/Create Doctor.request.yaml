@@ -8,8 +8,8 @@ body:
   type: text
   content: |-
     {
-      "user_id": 1,
-      "specialization": "Cardiology",
-      "phone_number": "08123456789"
+      "user_id": 8,
+      "specialization": "General Practitioner",
+      "phone": "08123456789"
     }
 order: 2000
